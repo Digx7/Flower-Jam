@@ -6,12 +6,22 @@ using UnityEngine.Events;
 public class CollisionDetector : MonoBehaviour
 {
     public UnityEvent collsionDetected;
+    public bool oneTimeOnly = true;
+
+    private bool hasCollided = false;
 
     public void OnCollisionEnter(Collision Col){
-      collsionDetected.Invoke();
+      if(oneTimeOnly && !hasCollided) {
+        hasCollided = true;
+        collsionDetected.Invoke();
+      }
+      if(!oneTimeOnly) collsionDetected.Invoke();
     }
 
     public void OnTriggerEnter(Collider col){
-      collsionDetected.Invoke();
+      if(oneTimeOnly && !hasCollided) {
+        hasCollided = true;
+        collsionDetected.Invoke();
+      }
     }
 }

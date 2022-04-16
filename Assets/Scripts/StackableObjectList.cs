@@ -7,7 +7,7 @@ public class StackableObjectList : MonoBehaviour
     public List<GameObject> stackableObjects;
 
     public GameObject GetRandomObject(){
-      int randomIndex = Random.Range(0, stackableObjects.Count - 1);
+      int randomIndex = Random.Range(0, stackableObjects.Count);
       return GetObjectAtIndex(randomIndex);
     }
 

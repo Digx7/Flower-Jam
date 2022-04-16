@@ -10,6 +10,7 @@ public class Gamemanager : MonoBehaviour
 
     public UnityEvent gameStart;
     public UnityEvent gameEnd;
+    public IntEvent scoreUpdated;
 
     public void Start(){
       GameStart();
@@ -37,9 +38,16 @@ public class Gamemanager : MonoBehaviour
 
     public void SetScore(int input){
       score = input;
+      scoreUpdated.Invoke(score);
+    }
+
+    public void SetScore(float input){
+      score = (int)input;
+      scoreUpdated.Invoke(score);
     }
 
     public void UpdateScore(int input){
       score += input;
+      scoreUpdated.Invoke(score);
     }
 }
