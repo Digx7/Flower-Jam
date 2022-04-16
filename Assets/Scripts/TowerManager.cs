@@ -12,16 +12,20 @@ public class TowerManager : MonoBehaviour
     public GameObject currentFallingObject;
     public StackableObjectList stackableObjectList;
     public ObjectSpawner objectSpawner;
+    public bool gameIsGoing = true;
 
     public FloatEvent heightChanged;
+    public Vector2 objectMoveDirection;
 
     public List<GameObject> DroppedObjects;
 
     public void DropNewObject(){
-      GameObject objToDrop = stackableObjectList.GetRandomObject();
-      currentFallingObject = objectSpawner.SpawnObject(objToDrop);
-      currentFallingObject.GetComponent<CollisionDetector>().collsionDetected.AddListener(delegate{AddObjectToDroppedObjects(currentFallingObject);});
-      currentFallingObject.GetComponent<CollisionDetector>().collsionDetected.AddListener(DropNewObject);
+      if (gameIsGoing){
+        GameObject objToDrop = stackableObjectList.GetRandomObject();
+        currentFallingObject = objectSpawner.SpawnObject(objToDrop);
+        currentFallingObject.GetComponent<CollisionDetector>().collsionDetected.AddListener(delegate{AddObjectToDroppedObjects(currentFallingObject);});
+        currentFallingObject.GetComponent<CollisionDetector>().collsionDetected.AddListener(DropNewObject);
+      }
     }
 
     public void MoveFallingObject(Vector2 input){
@@ -33,6 +37,10 @@ public class TowerManager : MonoBehaviour
       currentFallingObject.GetComponent<Rigidbody>().AddForce(trueDirection);
     }
 
+    public void Stop(){
+      gameIsGoing = false;
+    }
+
     public void AddObjectToDroppedObjects(GameObject input){
       DroppedObjects.Add(input);
       FindTowerHeight();
@@ -42,8 +50,13 @@ public class TowerManager : MonoBehaviour
       return towerHeight;
     }
 
+    public void SetObjectMoveDirection(Vector2 input){
+      objectMoveDirection = input;
+    }
+
     private void Update(){
       MoveTowerManager(towerHeight);
+      MoveFallingObject(objectMoveDirection);
     }
 
     private void FindTowerHeight(){
