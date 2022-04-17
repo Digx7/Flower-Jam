@@ -17,6 +17,8 @@ public class TowerManager : MonoBehaviour
     public FloatEvent heightChanged;
     public Vector2 objectMoveDirection;
 
+    public UnityEvent NewPeiceSpawn;
+
     public List<GameObject> DroppedObjects;
 
     public void DropNewObject(){
@@ -25,6 +27,7 @@ public class TowerManager : MonoBehaviour
         currentFallingObject = objectSpawner.SpawnObject(objToDrop);
         currentFallingObject.GetComponent<CollisionDetector>().collsionDetected.AddListener(delegate{AddObjectToDroppedObjects(currentFallingObject);});
         currentFallingObject.GetComponent<CollisionDetector>().collsionDetected.AddListener(DropNewObject);
+        NewPeiceSpawn.Invoke();
       }
     }
 
