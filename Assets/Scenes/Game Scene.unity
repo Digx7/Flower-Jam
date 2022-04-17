@@ -1384,6 +1384,7 @@ MonoBehaviour:
   - {fileID: 213985193547732537, guid: cefcf212e991c194eb2f3aaf44a3345d, type: 3}
   - {fileID: 5729040006224778325, guid: 46db6659880c4a84ea824f9ba9648087, type: 3}
   - {fileID: 3641346704465872384, guid: ce29741e264f0ae44810b4b921e46d04, type: 3}
+  - {fileID: 3267802666856936949, guid: 58051271d6d60774d9e9af7f47aaf112, type: 3}
 --- !u!1 &1026826359
 GameObject:
   m_ObjectHideFlags: 0
@@ -1651,7 +1652,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Test Scene
+          m_StringArgument: Game Scene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1304750201

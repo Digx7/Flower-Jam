@@ -66,6 +66,7 @@ MonoBehaviour:
   collsionDetected:
     m_PersistentCalls:
       m_Calls: []
+  oneTimeOnly: 1
 --- !u!135 &6082820684577362831
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -73,7 +74,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8411813548839861874}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b1536042c66b7024cb93e7be1d830a2f, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
